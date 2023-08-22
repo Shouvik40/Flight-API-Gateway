@@ -1,0 +1,1 @@
+Authentication simple solution - https://www.passportjs.org/

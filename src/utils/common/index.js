@@ -3,4 +3,5 @@ module.exports = {
   SuccessResponse: require("./success-response"),
   Enums: require("./enums"),
   // CRONS: require("./cron-jobs"),
+  Auth: require("./auth"),
 };

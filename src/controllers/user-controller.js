@@ -8,9 +8,22 @@ const { SuccessResponse, ErrorResponse } = require("../utils/common");
  * req-body {email :"a@b.com",password:"123"}
  *
  */
-async function create(req, res) {
+async function signup(req, res) {
   try {
-    const user = await UserService.create({
+    const user = await UserService.signup({
+      email: req.body.email,
+      password: req.body.password,
+    });
+    SuccessResponse.data = user;
+    return res.status(StatusCodes.CREATED).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.error = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+async function signin(req, res) {
+  try {
+    const user = await UserService.signin({
       email: req.body.email,
       password: req.body.password,
     });
@@ -23,5 +36,6 @@ async function create(req, res) {
 }
 
 module.exports = {
-  create,
+  signup,
+  signin,
 };
