@@ -19,6 +19,7 @@ function validateAuthRequest(req, res, next) {
 }
 
 async function checkAuth(req, res, next) {
+  console.log("Check Auth");
   try {
     const response = await UserService.isAuthenticated(req.headers["x-access-token"]);
     if (response) {
@@ -41,4 +42,5 @@ async function isAdmin(req, res, next) {
 module.exports = {
   validateAuthRequest,
   checkAuth,
+  isAdmin,
 };
